@@ -1,0 +1,86 @@
+{%extends "mechanic_layout.html"%}
+{%block content%}
+
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container search-table">
+            <div class="search-box">
+                <div class="row">
+					<h2>View Complaints</h2>
+                </div>
+            </div>
+
+			
+            <div class="search-list">
+            
+                <table class="table" id="myTable">
+						<thead>
+							<tr>
+								<th>Client Name</th>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Message</th>
+								<th>Assign</th>
+                                
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+                                {% for i in obj %}
+								{% for j in i.uid %}
+                                <tr>
+									<td>{{j.name}}</td>
+									<td>{{i.date}}</td>
+                                    <td>{{i.time}}</td>
+                                    <td>{{i.msg}}</td>
+                                   
+								<td class="td-actions">
+									<a href="/add_assign/{{i.id}}" class="btn btn-small btn-primary" style="background-color: green;
+                                    border-color: green;">
+										<i class="">Assign</i>										
+									</a>
+									
+									
+								</td>
+							</tr>
+						
+                            {% endfor %}
+							{% endfor %}
+						
+						</tbody>
+					</table>
+	
+				</div>
+			</div>
+        
+			<style>
+				.search-table{
+		padding: 10%;
+		margin-top: -6%;
+	}
+	.search-box{
+		background: cornflowerblue;
+		border: 1px solid #ababab;
+		padding: 3%;
+	}
+	.search-box input:focus{
+		box-shadow:none;
+		border:2px solid #eeeeee;
+	}
+	.search-list{
+		background: #fff;
+		border: 1px solid #ababab;
+		border-top: none;
+	}
+	.search-list h3{
+		background: #eee;
+		padding: 3%;
+		margin-bottom: 0%;
+	}
+			</style>
+
+	{%endblock%}
